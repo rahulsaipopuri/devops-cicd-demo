@@ -31,13 +31,14 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            whoami
-            hostname
             sudo  docker pull rahulpopuri/rahul-app:latest
 
             sudo docker stop rahul-app || true
 
             sudo docker rm rahul-app || true
+
+            sudo docker ps -q --filter "publish=80" | xargs -r sudo docker stop
+            sudo docker ps -aq --filter "publish=80" | xargs -r sudo docker rm
 
             sudo docker run -d\
               --name rahul-app \
