@@ -33,13 +33,13 @@ jobs:
           script: |
             whoami
             hostname
-            docker pull rahulpopuri/rahul-app:latest
+            sudo  docker pull rahulpopuri/rahul-app:latest
 
-            docker stop rahul-app || true
+            sudo docker stop rahul-app || true
 
-            docker rm rahul-app || true
+            sudo docker rm rahul-app || true
 
-            docker run -d\
+            sudo docker run -d\
               --name rahul-app \
               -p 80:80 \
               rahulpopuri/rahul-app:latest
