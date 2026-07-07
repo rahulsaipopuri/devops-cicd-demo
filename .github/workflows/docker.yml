@@ -24,7 +24,7 @@ jobs:
       - name: Push Docker Image
         run: docker push rahulpopuri/rahul-app:latest
       - name: Deploy to EC2
-        user: appleboy/ssh-action@v1.2.0
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
